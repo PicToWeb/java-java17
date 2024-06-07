@@ -27,7 +27,7 @@ public class Method_02_Test {
     // tag::DaoA[]
     class DaoA implements IDao {
 
-        List<Person> people = Data.buildPersonList(20);
+        List<Person> people = Data.buildPersonList(30);
 
         @Override
         public List<Person> findAll() {
@@ -55,7 +55,7 @@ public class Method_02_Test {
 
         // TODO invoquer la méthode format() pour que le test soit passant
         String result = daoA.format();
-
-        assert "DaoA[20 persons]".equals(result);
+        System.out.println(result);
+        assert "DaoA[30 persons]".equals(result);
     }
 }
