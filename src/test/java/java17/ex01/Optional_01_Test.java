@@ -4,6 +4,7 @@ package java17.ex01;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,14 +25,15 @@ public class Optional_01_Test {
     @Test
     public void test_optional_ifPresent() throws Exception {
     	
-    	List<Person> persons = Data.buildPersonList(100);
+    	List<Person> persons = Data.buildPersonList(10);
 
         // TODO rechercher dans la liste ci-dessus la 1ère personne ayant 18 ans
         // TODO utiliser la méthode "findFirst"
-        Optional<Person> optPerson = null;
+        Optional<Person> optPerson = persons.stream().findFirst();
         assertThat(optPerson.isPresent(), is(true));
         
         // TODO afficher la personne en question si l'optional contient une personne
+        System.out.println(optPerson.get().getFirstname());
     }
 
     @Test(expected=NotPresentException.class)
@@ -40,9 +42,10 @@ public class Optional_01_Test {
 
         // TODO rechercher dans la liste ci-dessus la 1ère personne ayant 75 ans
         // TODO utiliser la méthode "findFirst"
-        Optional<Person> optPerson = null;
+        Optional<Person> optPerson = persons.stream().filter(person->person.getAge()==75).findFirst();
         assertThat(optPerson.isPresent(), is(false));
         
+        Person person = optPerson.orElseThrow(NotPresentException::new);
         // TODO si la personne n'existe pas, jeter une exception NotPresentException
         // TODO utiliser la méthode "orElseThrow"
 
