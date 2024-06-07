@@ -2,7 +2,10 @@ package java17.ex01;
 
 import java.util.List;
 
+
 import org.junit.Test;
+
+
 
 import java17.data.Data;
 import java17.data.Person;
@@ -15,12 +18,17 @@ public class Method_01_Test {
 
     // tag::IDao[]
     interface IDao {
+    	
         List<Person> findAll();
         
         // TODO créer une méthode int sumAge()
         // TODO Cette méthode retourne le résultat de l'addition des ages des personnes
-        public default int sumAge(int a,int b) {
-        	return a +b;
+        public default int sumAge() {
+        	int result = 0;
+        	for (Person personne :findAll()) {
+        		result += personne.getAge();
+        	}
+        	return result;
         }
 
     }
@@ -46,13 +54,17 @@ public class Method_01_Test {
         }
     }
 
+    
     @Test
     public void test_daoA_sumAge() throws Exception {
 
         DaoA daoA = new DaoA();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        DaoA ex1 = new DaoA();
+        int result = ex1.sumAge();
+        
+        
 
         assert result == 210;
     }
@@ -63,7 +75,9 @@ public class Method_01_Test {
         DaoB daoB = new DaoB();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        DaoB ex1 = new DaoB();
+        int result = ex1.sumAge();
+        
 
         assert result == 5050;
 
