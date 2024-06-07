@@ -58,5 +58,6 @@ public class Method_02_Test {
         System.out.println(result);
         assert "DaoA[30 persons]".equals(result);
         
+        
     }
 }
