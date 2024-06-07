@@ -57,5 +57,6 @@ public class Method_02_Test {
         String result = daoA.format();
         System.out.println(result);
         assert "DaoA[30 persons]".equals(result);
+        
     }
 }
