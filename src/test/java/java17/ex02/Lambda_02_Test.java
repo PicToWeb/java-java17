@@ -2,12 +2,14 @@ package java17.ex02;
 
 import org.junit.Test;
 
+
 import java17.data.Account;
 import java17.data.Data;
 import java17.data.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -38,7 +40,7 @@ public class Lambda_02_Test {
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = result.stream().map(s->s.getOwner()).toList();
+        List<Account> result = personList.stream().map(m-> new Account(m,100)).collect(Collectors.toList());
 
         assert result.size() == personList.size();
         for (Account account : result) {
