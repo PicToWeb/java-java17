@@ -17,16 +17,8 @@ public class Function_03_Test {
     // TODO l'enfant possède le prenom "<PRENOM_PERE> <PRENOM_MERE>"
     // TODO l'age de l'enfant est 0
     // TODO le mot de passe de l'enfant est null
-    BinaryOperator<Person> makeAChild = (father,mother) ->{
+    BinaryOperator<Person> makeAChild = (father,mother) -> new Person(father.getFirstname() + " " + mother.getFirstname(),father.getLastname(),0,null);
     	
-    	String childNom = father.getLastname();
-    	String childPrenom = father.getFirstname() + " " + mother.getFirstname();
-    	int childAge = 0;
-    	String childPass = null;
-    	
-    	return new Person(childPrenom,childNom,childAge,childPass);
-    	
-    };
     //  end::makeAChild[]
 
 
