@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -73,7 +74,7 @@ public class Stream_02_Test {
 		 */
 		double result = orders.stream().mapToDouble(Order::getPrice).sum();
 
-		//double result = orders.stream().map(p -> p).collect(Collectors.summingDouble(money -> money.getPrice()));
+		//double result = orders.stream().collect(Collectors.summingDouble(money -> money.getPrice()));
 		
 		assertThat(result, is(10900.0));
 	}
